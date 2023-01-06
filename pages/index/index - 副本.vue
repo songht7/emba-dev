@@ -1,6 +1,33 @@
 <template>
-	<view class="content">
-		EMBA
+	<view class="content" :style="{'background-image':'url('+imgUrl+lang+'/home/1.jpg)'}">
+		<view class="pg-main">
+			<!-- <img lazy-load="true" class="logo-type" src='/static/logo-type.png' /> -->
+			<!-- <img lazy-load="true" class="logo" src='/static/logo.png' /> -->
+			<image lazy-load="true" class="logo-type" src="/static/logo-type.png" mode="widthFix"></image>
+			<image lazy-load="true" class="logo" src="/static/logo.png" mode="aspectFill"></image>
+			<view class="lang-box">
+				<view v-if="lang=='en'" class="lg-btn" @click="setLang('cn')">
+					中文
+				</view>
+				<!-- <view class="lg-cut">
+					/
+				</view> -->
+				<view v-if="lang=='cn'" class="lg-btn" @click="setLang('en')">
+					EN
+				</view>
+			</view>
+			<view class="nav-box">
+				<block v-for="(obj,key) in list['nav'][lang]" :key="key">
+					<navigator class="nav-btn" :url="obj.link+lang">
+						<image lazy-load="true" class="nav-btn-img" :src='imgUrl+lang+obj.btn' mode="widthFix"
+							:alt='obj.title'></image>
+					</navigator>
+				</block>
+			</view>
+			<!-- <img :src='list["pageBg"][$store.state.lang]["bg"]' class="pg-img" alt=""> -->
+
+			<drag-button :isDock="true" :existTabBar="true" />
+		</view>
 	</view>
 </template>
 

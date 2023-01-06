@@ -1,5 +1,5 @@
 {
-    "name" : "GDBA",
+    "name" : "EMBA",
     "appid" : "__UNI__B2AC4E4",
     "description" : "法国里昂商学院",
     "versionName" : "1.0.0",
@@ -85,6 +85,9 @@
                 }
             }
         },
-        "template" : "pages/h5-index.html"
+        "template" : "pages/h5-index.html",
+        "devServer" : {
+            "https" : false
+        }
     }
 }
