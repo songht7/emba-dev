@@ -1,0 +1,107 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+		//#ifdef H5
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "北邮里昂商学院EMBA",
+				"navigationStyle": "custom" //h5
+				// "app-plus": { //mp
+				// 	"titleNView": {
+				// 		"type": "transparent"
+				// 	}
+				// }
+			}
+		}, {
+			"path": "pages/tablist/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom" //h5
+			}
+		},
+		{
+			"path": "pages/college/index",
+			"style": {
+				"navigationBarTitleText": "关于学院",
+				"navigationStyle": "custom" //h5
+			}
+		},
+		// {
+		// 	"path": "pages/doctor/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "同窗学友",
+		// 		"backgroundColor": "#E3E3E3"
+		// 	}
+		// },
+		{
+			"path": "pages/contact/index",
+			"style": {
+				"navigationBarTitleText": "联系我们",
+				"navigationStyle": "custom" //h5
+			}
+		},
+		{
+			"path": "pages/single/index",
+			"style": {
+				"navigationBarTitleText": "法国里昂商学院",
+				"navigationStyle": "custom" //h5
+			}
+		}
+		//#endif
+		// #ifdef NOT-SHOW  
+		,
+		// #endif
+		//#ifdef MP-WEIXIN
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "法国里昂商学院",
+				"app-plus": { //mp
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		}, {
+			"path": "pages/tablist/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": { //mp
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/college/index",
+			"style": {
+				"navigationBarTitleText": "关于学院",
+				"app-plus": { //mp
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/contact/index",
+			"style": {
+				"navigationBarTitleText": "联系我们",
+				"app-plus": { //mp
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		}
+		//#endif
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "法国里昂商学院",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

@@ -1,0 +1,150 @@
+.tab-box {
+	display: flex;
+	flex-direction: row;
+	background: #f1f1f1;
+}
+
+.tab-nav {
+	width: 80upx;
+	/* background-color: #ededed; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.drawer-nav .tab-nav {
+	background-color: #fff;
+	margin-bottom: 50upx;
+	justify-content: flex-start;
+}
+
+.drawer-menu {
+	width: 50%;
+}
+
+.drawer-nav {
+	padding: 40upx 20upx 0 40upx;
+}
+
+.drawer-nav-btn.active {
+	color: #e2001a;
+}
+
+.d-nav-list {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	line-height: 3;
+}
+
+.drawer-nav-btn {
+	font-size: 30upx;
+}
+
+.uni-page-body {
+	background-color: #ededed;
+}
+
+.tabs {
+	flex: 1;
+	flex-direction: column;
+	overflow: hidden;
+	background-color: #ededed;
+	/* #ifdef MP-ALIPAY || MP-BAIDU */
+	height: 100vh;
+	/* #endif */
+}
+
+.uni-swiper-tab {
+	border-bottom: none;
+}
+
+.tab-img-list {
+	padding: 0;
+	margin: 0;
+	line-height: 0;
+}
+
+.scroll-h {
+	width: 750rpx;
+	height: 80rpx;
+	flex-direction: row;
+	/* #ifndef APP-PLUS */
+	white-space: nowrap;
+	/* #endif */
+	/* flex-wrap: nowrap; */
+	/* border-color: #cccccc;
+		border-bottom-style: solid;
+		border-bottom-width: 1px; */
+}
+
+.line-h {
+	height: 1rpx;
+	background-color: #cccccc;
+}
+
+.uni-tab-item {
+	/* #ifndef APP-PLUS */
+	display: inline-block;
+	/* #endif */
+	flex-wrap: nowrap;
+	padding-left: 34rpx;
+	padding-right: 34rpx;
+}
+
+.uni-tab-item-title {
+	color: #555;
+	font-size: 30rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	flex-wrap: nowrap;
+	/* #ifndef APP-PLUS */
+	white-space: nowrap;
+	/* #endif */
+}
+
+.uni-tab-item-title-active {
+	color: #007AFF;
+}
+
+.swiper-box {
+	flex: 1;
+}
+
+.swiper-item {
+	flex: 1;
+	flex-direction: row;
+}
+
+.scroll-v {
+	flex: 1;
+	/* #ifndef MP-ALIPAY */
+	flex-direction: column;
+	/* #endif */
+	width: 750rpx;
+}
+
+.tab-dtl-img {
+	width: 100%;
+}
+
+.title-block {
+	color: #000;
+	background-color: inherit;
+	text-transform: uppercase;
+}
+
+.title-block.uni-tab-item-title-active {
+	position: relative;
+}
+
+.title-block.uni-tab-item-title-active::after {
+	content: "";
+	width: 60%;
+	height: 5upx;
+	background-color: #e2001a;
+	position: absolute;
+	left: 20%;
+	bottom: -18upx;
+}
