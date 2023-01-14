@@ -49,24 +49,7 @@ const store = new Vuex.Store({
 				success: function(res) {
 					console.log("getLang success")
 					ctx.commit("setLang", res.data)
-					// const _nav = [{
-					// 	"btn": `/static/${lg}/home/nav-1.png`,
-					// 	"link": `/pages/college/index?lg=${lg}`,
-					// 	"title": "关于学院",
-					// }, {
-					// 	"btn": `/static/${lg}/home/nav-2.png`,
-					// 	"link": `/pages/project/index?lg=${lg}`,
-					// 	"title": "关于项目",
-					// }, {
-					// 	"btn": `/static/${lg}/home/nav-3.png`,
-					// 	"link": `/pages/doctor/index?lg=${lg}`,
-					// 	"title": "同窗学友",
-					// }, {
-					// 	"btn": `/static/${lg}/home/nav-4.png`,
-					// 	"link": `/pages/study/index?lg=${lg}`,
-					// 	"title": "学习之旅",
-					// }]
-					// ctx.state.nav = _nav;
+					
 				},
 				fail() {
 					console.log("getLang fail")

@@ -136,6 +136,16 @@
 }
 
 .title-block.uni-tab-item-title-active {
+	font-weight: bold;
+	background-image: linear-gradient(to right, #e30013, #392585);
+	background-clip: text;
+	background-size: 100%;
+	-webkit-background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+}
+
+/* .title-block.uni-tab-item-title-active {
 	position: relative;
 }
 
@@ -148,3 +158,4 @@
 	left: 20%;
 	bottom: -18upx;
 }
+ */

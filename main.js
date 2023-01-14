@@ -26,6 +26,8 @@ Vue.component("swiper-block", swiper)
 Vue.prototype.websiteUrl = 'https://emba.meetji.com';
 Vue.prototype.sourceUrl = 'https://api.meetji.com';
 
+Vue.prototype.$imgUrl = '/static/pages/';
+Vue.prototype.$domain = 'http://emba.meetji.com';
 
 Vue.prototype.$lgChane = true; //中英文切换
 

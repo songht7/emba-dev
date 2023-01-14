@@ -1,12 +1,9 @@
 <template>
 	<view :class="['content','lang-'+lang]">
-		<view class="pg-main" :class="[pageis=='doctor'?'doctor-main':'']">
-			<view :class="[pageis!='doctor'?'uni-tab-bar':'']">
-				<view :class="['tab-box',pageis=='doctor'?'fixed':'']">
+		<view class="pg-main" :class="[]">
+			<view :class="['uni-tab-bar']">
+				<view :class="['tab-box']">
 					<!-- 头部菜单按钮 -->
-					<view class="tab-nav" @click="drawerShow()">
-						<image src="/static/menu.png" class="drawer-menu" mode="widthFix"></image>
-					</view>
 					<scroll-view id="tab-bar" style="width: 90%;" class="uni-swiper-tab" :scroll-x="true"
 						:show-scrollbar="false" :scroll-into-view="scrollInto">
 						<view v-for="(tab,index) in tabBars" :key="tab.id" class="uni-tab-item" :id="`tb-${tab.id}`"
@@ -16,93 +13,61 @@
 						</view>
 					</scroll-view>
 				</view>
-				<block v-if="pageis=='doctor'">
-					<view class="flex-station"></view>
-				</block>
 				<swiper :current="tabIndex" class="swiper-box" duration="300" @change="ontabchange">
 					<swiper-item v-for="(lst,index1) in contList" :key="index1">
 						<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
 							<view class="tab-img-list">
-								<block v-if="lst['val'].length" v-for="(img,k) in lst.val" :key="k">
-									<block v-if="img.split('|').length>1&&img.split('|')[0]=='video'">
-										<view class="video-box">
-											<video class="myVideo" :src="domain+img.split('|')[1]" :autoplay='autoplay'
-												:show-mute-btn='muteBtn' :loop='loop' controls></video>
-										</view>
-									</block>
-									<block v-else>
-										<image class="tab-dtl-img" :src='imgUrl+lang+img' @click="linkto(lst,k)"
-											mode="widthFix"></image>
-										<!-- <img class="tab-dtl-img" :src='"/static/"+lang+img' @click="linkto(lst,k)" alt=""> -->
-									</block>
+								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
+									<image class="tab-dtl-img"
+										:src='$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"' mode="widthFix">
+									</image>
+									<!-- 		<view class="">
+										{{$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"}}
+									</view> -->
 								</block>
+								<block v-if="lst.lsSwiper&&lst.lsSwiper.length">
+									<!-- 滑块 -->
+									<view class="" v-for="(item,kk) in lst.lsSwiper" :key="kk">
+										<!-- {{$imgUrl+lang+"/page/p"+lst["id"]+"/"+item.img}} -->
+										<container :titleImg='$imgUrl+lang+"/page/p"+lst["id"]+"/"+item.img'>
+											<!-- {{lst["lsSwiperList"][kk][0]}} -->
+											<ls-swiper :list='lst["lsSwiperList"][kk]' :imgUrl="$imgUrl" imgKey="imgUrl"
+												imgWidth="98%" :previousMargin="previousMargin" :nextMargin="nextMargin"
+												:height="height" :imgRadius="imgRadius" />
+										</container>
+									</view>
+								</block>
+								<block v-if="lst.tips">
+									<view class="tips">
+										<image class="tab-dtl-img"
+											:src='$imgUrl+lang+"/page/p"+lst["id"]+"/"+lst.tips' mode="widthFix">
+										</image>
+									</view>
+								</block>
+
+								<view class="page-footer-btn">
+									<navigator class="nav-btn" url="/pages/tablist/index?id=emba">
+										<image lazy-load="true" class="nav-btn-img" :src='$imgUrl+lang+"/page/btn.png"'
+											mode="widthFix">
+										</image>
+									</navigator>
+								</view>
 							</view>
 						</scroll-view>
 					</swiper-item>
 				</swiper>
-
 			</view>
-			<!-- 同窗学友页（同窗寄语） -->
-			<block v-if="pageis=='doctor'">
-				<view>
-					<container :titleImg='imgUrl+lang+list["titleImg"][lang]'>
-						<ls-swiper :list="base_lsit" :imgUrl="imgUrl" imgKey="imgUrl" imgWidth="98%"
-							:previousMargin="previousMargin" :nextMargin="nextMargin" :height="height"
-							:imgRadius="imgRadius" />
-					</container>
-				</view>
-			</block>
+
 		</view>
-
-		<!-- 浮动按钮 (联系我们) -->
-		<drag-button :isDock="true" :existTabBar="true" />
-		<!-- 侧滑菜单 -->
-		<uni-drawer :visible="showLeft" mode="left" @close="drawerHide('left')">
-			<view class="drawer-nav">
-				<view class="d-nav-list">
-					<view class="tab-nav" @click="drawerHide()">
-						<image src="/static/menu.png" class="drawer-menu" mode="widthFix"></image>
-					</view>
-					<navigator class="drawer-nav-btn" :url="getLT(navFix,'link','home')">
-						{{getLT(navFix,'title','home')}}
-					</navigator>
-					<block v-for="(obj,key) in nav[lang]" :key="key">
-						<navigator :class="['drawer-nav-btn',obj.key==pageis?'active':'']" :url="obj.link+lang">
-							{{obj.title}}
-						</navigator>
-					</block>
-					<navigator class="drawer-nav-btn" :url="getLT(navFix,'link','contact')">
-						{{getLT(navFix,'title','contact')}}
-					</navigator>
-
-					<view class="lang-box">
-						<view v-if="lang=='en'" class="lg-btn" @click="setLang('cn')">
-							中文
-						</view>
-						<view v-if="lang=='cn'" class="lg-btn" @click="setLang('en')">
-							EN
-						</view>
-					</view>
-				</view>
-			</view>
-		</uni-drawer>
-		<!-- 侧滑菜单/ -->
-
 	</view>
 </template>
 
 <script>
 	import {
-		Home,
-		College, //关于学院
-		Project, //关于项目
-		Doctor, //
-		Study //学习之旅
+		Emba
 	} from "../../common/data.js"
 
 	import dragButton from "@/components/drag-button/drag-button.vue";
-	import uniDrawer from '@/components/uni-drawer/uni-drawer.vue';
-
 	import container from '../../components/container/index.vue'
 	import LsSwiper from '../../components/ls-swiper/index.vue'
 
@@ -114,10 +79,6 @@
 	export default {
 		data() {
 			return {
-				nav: Home.nav,
-				domain: Home.domain,
-				imgUrl: Home.imgUrl,
-				navFix: Home.navFix,
 				lang: this.$store.state.lang,
 				pageis: "",
 				list: [],
@@ -131,11 +92,10 @@
 				showTips: false,
 				navigateFlag: false,
 				pulling: false,
-				showLeft: false, //侧滑菜单
 				/*doctor*/
 				previousMargin: 30,
 				nextMargin: 100,
-				height: this.$store.state.lang == 'en' ? 430 : 400,
+				height: 200,
 				imgRadius: 5,
 				base_lsit: [],
 				autoplay: true,
@@ -145,32 +105,11 @@
 			}
 		},
 		components: {
-			uniDrawer,
 			dragButton,
 			container,
 			LsSwiper,
 		},
-		computed: {
-			getLT() {
-				var that = this;
-				return function(navFix, type, page) {
-					var dt = '';
-					var lg = that.$store.state.lang;
-					switch (type) {
-						case 'link':
-							dt = navFix[page][lg]["link"];
-							break;
-						case 'title':
-							dt = navFix[page][lg]["title"];
-							break;
-						default:
-							break;
-					}
-					return dt;
-				}
-
-			}
-		},
+		computed: {},
 		onLoad(option) {
 			const that = this;
 			that.$store.dispatch('getLang');
@@ -191,7 +130,7 @@
 				var share_url = window.location.href,
 					title = "法国里昂商学院",
 					dec = "全球工商管理博士项目",
-					imgUrl = "http://emlyon.meetji.com/static/logo.png";
+					imgUrl = "http://emba.meetji.com/static/logo.png";
 				mdl.wxShare(share_url, title, dec, imgUrl);
 			}
 			//#endif
@@ -200,35 +139,12 @@
 			getData() {
 				var _lg = this.$store.state.lang
 				switch (this.pageis) {
-					case 'college':
+					case 'emba':
 						uni.setNavigationBarTitle({
-							title: College['title'][_lg]
+							title: Emba['title'][_lg]
 						})
-						this.tabBars = College['tabBars'][_lg];
-						this.contList = College['contList'][_lg];
-						break;
-					case 'project':
-						uni.setNavigationBarTitle({
-							title: Project['title'][_lg]
-						})
-						this.tabBars = Project['tabBars'][_lg];
-						this.contList = Project['contList'][_lg];
-						break;
-					case 'study':
-						uni.setNavigationBarTitle({
-							title: Study['title'][_lg]
-						})
-						this.tabBars = Study['tabBars'][_lg];
-						this.contList = Study['contList'][_lg];
-						break;
-					case 'doctor':
-						uni.setNavigationBarTitle({
-							title: Doctor['title'][_lg]
-						})
-						this.list = Doctor;
-						this.tabBars = Doctor['tabBars'][_lg];
-						this.contList = Doctor['contList'][_lg];
-						this.base_lsit = Doctor['docList'][_lg];
+						this.tabBars = Emba['tabBars'][_lg];
+						this.contList = Emba['contList'][_lg];
 						break;
 					default:
 						uni.redirectTo({
@@ -266,14 +182,6 @@
 			},
 			loadMore(e) {
 				var that = this;
-			},
-			drawerShow(e) {
-				console.log("show", e);
-				this.showLeft = true
-			},
-			drawerHide() {
-				console.log("hide");
-				this.showLeft = false
 			},
 			setLang(val) {
 				var that = this;
@@ -337,5 +245,23 @@
 	.myVideo {
 		width: 80%;
 		margin: 0 10%;
+	}
+
+	.page-footer-btn {
+		background: #efefef;
+		padding: 30upx 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.nav-btn {
+		width: 60%;
+	}
+
+	.nav-btn-img {
+		width: 100%;
+	}
+	.tips{
+		padding: 10upx 40upx;
 	}
 </style>

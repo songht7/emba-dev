@@ -1,6 +1,27 @@
 <template>
-	<view class="content">
-		EMBA
+	<view class="content" :style="{'background-image':'url('+$imgUrl+lang+'/home/bg.jpg)'}">
+		<view class="pg-main">
+			<!-- <img lazy-load="true" class="logo-type" src='/static/logo-type.png' /> -->
+			<!-- <img lazy-load="true" class="logo" src='/static/logo.png' /> -->
+			<image lazy-load="true" class="logo-type" src="/static/logo-type.png" mode="widthFix"></image>
+			<image lazy-load="true" class="logo" src="/static/logos.png" mode="widthFix"></image>
+
+			<!-- <img :src='list["pageBg"][$store.state.lang]["bg"]' class="pg-img" alt=""> -->
+			<view class="site-view-box">
+				<image lazy-load="true" class="site-view" :src='$imgUrl+lang+list.siteView' mode="widthFix"
+					:alt='list.title.lang'>
+				</image>
+				<navigator class="nav-btn" url="/pages/tablist/index?id=emba">
+					<image lazy-load="true" class="nav-btn-img" :src='$imgUrl+lang+"/home/btn.png"' mode="widthFix"
+						:alt='list.title.lang'></image>
+				</navigator>
+			</view>
+			<image lazy-load="true" class="footer-block" :src='$imgUrl+lang+"/home/emba.png"' mode="widthFix"
+				:alt='list.title.lang'>
+			</image>
+			<!-- 悬浮快捷键 -->
+			<!-- <drag-button :isDock="true" :existTabBar="true" /> -->
+		</view>
 	</view>
 </template>
 
@@ -19,7 +40,6 @@
 		data() {
 			return {
 				list: Home,
-				imgUrl:Home.imgUrl,
 				lang: this.$store.state.lang
 			}
 		},
@@ -81,7 +101,6 @@
 
 	.content {
 		height: 100%;
-		/* background: url(../../static/cn/home/1.jpg) no-repeat 50% bottom; */
 		background-repeat: no-repeat;
 		background-position: 50% top;
 		background-size: cover;
@@ -100,16 +119,33 @@
 	.logo-type,
 	.logo {
 		position: absolute;
-		top: 0;
-		right: 0;
-		width: 150upx;
+		top: 40upx;
+		right: 60upx;
+		width: 180upx;
 		height: 150upx;
 	}
 
+	.logo {
+		width: 280upx;
+		height: 110upx;
+	}
+
 	.logo-type {
-		top: 2%;
+		top: 40upx;
 		right: auto;
-		left: 3%;
+		left: 60upx;
+	}
+
+	.site-view-box {
+		position: absolute;
+		top: 20%;
+		width: 80%;
+		padding: 0 10%;
+		z-index: 10;
+	}
+
+	.site-view {
+		width: 100%;
 	}
 
 	.nav-box {
@@ -126,15 +162,8 @@
 	}
 
 	.nav-btn {
-		width: 45%;
-		height: calc(width * 1);
-		margin: 0 10upx;
-	}
-
-	.nav-btn:nth-child(3),
-	.nav-btn:nth-child(4) {
-		top: -12px;
-		position: relative;
+		margin: 20upx 0 0;
+		width: 75%;
 	}
 
 	.nav-btn-img {
@@ -146,5 +175,12 @@
 	.pg-img {
 		width: 100%;
 		display: block;
+	}
+
+	.footer-block {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		left: 0;
 	}
 </style>

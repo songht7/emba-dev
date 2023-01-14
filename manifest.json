@@ -88,6 +88,9 @@
         "template" : "pages/h5-index.html",
         "devServer" : {
             "https" : false
+        },
+        "router" : {
+            "mode" : "history"
         }
     }
 }

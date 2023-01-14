@@ -2,7 +2,7 @@
 	<view class="wrap">
 		<!-- <view class="header" v-if="title">{{title}}</view> -->
 		<view class="tab-header" v-if="titleImg">
-			<image :src="titleImg" style="width: 50%;" mode="widthFix"></image>
+			<image :src="titleImg" style="width: 80%;" mode="widthFix"></image>
 		</view>
 		<view class="content">
 			<slot></slot>
