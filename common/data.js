@@ -180,8 +180,28 @@ const Apply = {
 				"i6": {
 					"linkType": "outside", //链接类型：outside外部网站，默认本站内
 					"link": "https://em-lyon.force.com/Student"
+				},
+				"i8": {
+					//面试时间
+					"link": "/pages/interview/index"
 				}
 			}
+		}]
+	},
+};
+
+const Interview = {
+	//面试时间
+	"id": "interview",
+	"title": {
+		"cn": "面试时间",
+		"en": "Interview",
+	},
+	"contList": {
+		"cn": [{
+			"id": 1,
+			"title": "面试时间",
+			"lslength": 2, //列表长度（有多少张图）
 		}]
 	},
 };
@@ -189,7 +209,8 @@ const Apply = {
 module.exports = {
 	Home, //首页
 	Emba, //关于学院
-	Apply //申请条件
+	Apply, //申请条件
+	Interview //面试时间
 };
 
 // export default {

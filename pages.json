@@ -25,6 +25,12 @@
 				"navigationBarTitleText": "申请条件",
 				"navigationStyle": "custom" //h5
 			}
+		}, {
+			"path": "pages/interview/index",
+			"style": {
+				"navigationBarTitleText": "面试时间",
+				"navigationStyle": "custom" //h5
+			}
 		},
 		{
 			"path": "pages/contact/index",
@@ -62,6 +68,16 @@
 			"path": "pages/apply/index",
 			"style": {
 				"navigationBarTitleText": "申请条件",
+				"app-plus": { //mp
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+			}
+		}, {
+			"path": "pages/interview/index",
+			"style": {
+				"navigationBarTitleText": "面试时间",
 				"app-plus": { //mp
 					"titleNView": {
 						"type": "transparent"
