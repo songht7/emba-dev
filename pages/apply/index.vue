@@ -2,56 +2,19 @@
 	<view :class="['content','lang-'+lang]">
 		<view class="pg-main" :class="[]">
 			<view :class="['uni-tab-bar']">
-				<view :class="['tab-box']">
-					<!-- 头部菜单按钮 -->
-					<scroll-view id="tab-bar" style="width: 90%;" class="uni-swiper-tab" :scroll-x="true"
-						:show-scrollbar="false" :scroll-into-view="scrollInto">
-						<view v-for="(tab,index) in tabBars" :key="tab.id" class="uni-tab-item" :id="`tb-${tab.id}`"
-							:data-current="index" @click="ontabtap">
-							<text class="uni-tab-item-title title-block"
-								:class="tabIndex==index ? 'uni-tab-item-title-active' : ''">{{tab.name}}</text>
-						</view>
-					</scroll-view>
-				</view>
 				<swiper :current="tabIndex" class="swiper-box" duration="300" @change="ontabchange">
 					<swiper-item v-for="(lst,index1) in contList" :key="index1">
 						<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
 							<view class="tab-img-list">
 								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
-									<image class="tab-dtl-img"
-										:src='$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"' mode="widthFix">
+									<image lazy-load="true" class="tab-dtl-img"
+										@click="linkto(lst['picLink']['i'+index])"
+										:src='$imgUrl+lang+"/apply/"+"/ls_"+index+".jpg"' mode="widthFix">
 									</image>
 									<!-- 		<view class="">
 										{{$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"}}
 									</view> -->
 								</block>
-								<block v-if="lst.lsSwiper&&lst.lsSwiper.length">
-									<!-- 滑块 -->
-									<view class="" v-for="(item,kk) in lst.lsSwiper" :key="kk">
-										<!-- {{$imgUrl+lang+"/page/p"+lst["id"]+"/"+item.img}} -->
-										<container :titleImg='$imgUrl+lang+"/page/p"+lst["id"]+"/"+item.img'>
-											<!-- {{lst["lsSwiperList"][kk][0]}} -->
-											<ls-swiper :list='lst["lsSwiperList"][kk]' :imgUrl="$imgUrl" imgKey="imgUrl"
-												imgWidth="98%" :previousMargin="previousMargin" :nextMargin="nextMargin"
-												:height="height" :imgRadius="imgRadius" />
-										</container>
-									</view>
-								</block>
-								<block v-if="lst.tips">
-									<view class="tips">
-										<image class="tab-dtl-img"
-											:src='$imgUrl+lang+"/page/p"+lst["id"]+"/"+lst.tips' mode="widthFix">
-										</image>
-									</view>
-								</block>
-
-								<view class="page-footer-btn">
-									<navigator class="nav-btn" url="/pages/apply/index">
-										<image lazy-load="true" class="nav-btn-img" :src='$imgUrl+lang+"/page/btn.png"'
-											mode="widthFix">
-										</image>
-									</navigator>
-								</view>
 							</view>
 						</scroll-view>
 					</swiper-item>
@@ -64,7 +27,7 @@
 
 <script>
 	import {
-		Emba
+		Apply
 	} from "../../common/data.js"
 
 	import dragButton from "@/components/drag-button/drag-button.vue";
@@ -114,7 +77,7 @@
 			const that = this;
 			that.$store.dispatch('getLang');
 
-			let pageis = option.id || "";
+			let pageis = option.id || "apply";
 			this.pageis = pageis;
 			this.getData();
 
@@ -139,12 +102,11 @@
 			getData() {
 				var _lg = this.$store.state.lang
 				switch (this.pageis) {
-					case 'emba':
+					case 'apply':
 						uni.setNavigationBarTitle({
-							title: Emba['title'][_lg]
+							title: Apply['title'][_lg]
 						})
-						this.tabBars = Emba['tabBars'][_lg];
-						this.contList = Emba['contList'][_lg];
+						this.contList = Apply['contList'][_lg];
 						break;
 					default:
 						uni.redirectTo({
@@ -153,13 +115,17 @@
 						break;
 				}
 			},
-			linkto(obj, index) {
+			linkto(obj) {
 				var that = this;
-				if (obj.link) {
+				if (obj) {
 					// console.log(obj["link"][index])
-					uni.navigateTo({
-						url: `${obj["link"][index]}${that.$store.state.lang}`
-					})
+					if (obj.linkType && obj.linkType == "outside") {
+						window.open(obj["link"])
+					} else {
+						uni.navigateTo({
+							url: `${obj["link"]}`
+						})
+					}
 				}
 			},
 			ontabtap(e) {
@@ -261,7 +227,8 @@
 	.nav-btn-img {
 		width: 100%;
 	}
-	.tips{
+
+	.tips {
 		padding: 10upx 40upx;
 	}
 </style>

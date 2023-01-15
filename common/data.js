@@ -50,7 +50,7 @@ const Emba = {
 		"cn": [{
 				"id": 1,
 				"title": "项目纵览",
-				"lslength": 6 //列表长度（有多少张图）
+				"lslength": 8 //列表长度（有多少张图）
 			},
 			{
 				"id": 2,
@@ -141,14 +141,55 @@ const Emba = {
 						imgUrl: "/page/p5/beiyou/by_6.png"
 					}]
 				]
+			},
+			{
+				"id": 6,
+				"title": "智融平台",
+				"lslength": 4
+			},
+			{
+				"id": 7,
+				"title": "智享活动",
+				"lslength": 2
+			},
+			{
+				"id": 8,
+				"title": "智育学生",
+				"lslength": 4
 			}
 		]
 	},
 };
 
+const Apply = {
+	//申请条件
+	"id": "apply",
+	"title": {
+		"cn": "申请条件",
+		"en": "Application Conditions",
+	},
+	"contList": {
+		"cn": [{
+			"id": 1,
+			"title": "申请条件",
+			"lslength": 14, //列表长度（有多少张图）
+			"picLink": {
+				"i1": {
+					"link": "/"
+				},
+				"i6": {
+					"linkType": "outside", //链接类型：outside外部网站，默认本站内
+					"link": "https://em-lyon.force.com/Student"
+				}
+			}
+		}]
+	},
+};
+
 module.exports = {
 	Home, //首页
-	Emba //关于学院
+	Emba, //关于学院
+	Apply //申请条件
 };
 
 // export default {
