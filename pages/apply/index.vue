@@ -7,7 +7,32 @@
 						<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
 							<view class="tab-img-list">
 								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
-									<image lazy-load="true" class="tab-dtl-img"
+
+									<view v-if="index==13" class="contact-box">
+										<view class="contact-us">
+											<view class="contact-title">
+												联系方式 ：
+											</view>
+											<view class="contact-block">
+												<view class="person">
+													余老师 FionaYU
+												</view>
+												<view class="tel" @click="phoneCall('+86 13917718835')">
+													139 1771 8835
+												</view>
+											</view>
+											<view class="contact-block">
+												<view class="person">
+													王老师 AliceWANG
+												</view>
+												<view class="tel" @click="phoneCall('+86 13681217935')">
+													136 8121 7935
+												</view>
+											</view>
+										</view>
+
+									</view>
+									<image v-else lazy-load="true" class="tab-dtl-img"
 										@click="linkto(lst['picLink']['i'+index])"
 										:src='$imgUrl+lang+"/apply/"+"/ls_"+index+".jpg"' mode="widthFix">
 									</image>
@@ -114,6 +139,11 @@
 						})
 						break;
 				}
+			},
+			phoneCall(numb) {
+				uni.makePhoneCall({
+					phoneNumber: numb
+				});
 			},
 			linkto(obj) {
 				var that = this;
@@ -230,5 +260,41 @@
 
 	.tips {
 		padding: 10upx 40upx;
+	}
+
+	.contact-box {
+		background: url("../../static/pages/cn/apply/bg-line.jpg") repeat-y 50% 50%;
+		padding: 20upx 0;
+		background-size: contain;
+	}
+
+	.contact-us {
+		padding: 0 13%;
+	}
+
+	.contact-title {
+		font-weight: bold;
+		line-height: 2;
+		font-size: 34upx;
+		margin-bottom: 10upx;
+	}
+
+	.contact-block {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.person,
+	.tel {
+		width: 50%;
+		line-height: 2;
+		margin-bottom: 10upx;
+		font-size: 30upx;
+		color: #333;
+	}
+
+	.tel {
+		color: #e50012;
 	}
 </style>

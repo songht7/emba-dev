@@ -5,7 +5,7 @@
 				<swiper :current="tabIndex" class="swiper-box" duration="300" @change="ontabchange">
 					<swiper-item v-for="(lst,index1) in contList" :key="index1">
 						<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
-							<view class="tab-img-list">
+							<view :class="['tab-img-list',applyBtnFixed?'pb-100':'']">
 								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
 									<image lazy-load="true" class="tab-dtl-img"
 										@click="linkto(lst['picLink']['i'+index])"
@@ -15,13 +15,7 @@
 										{{$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"}}
 									</view> -->
 								</block>
-								<view class="page-footer-btn">
-									<navigator class="nav-btn" url="/pages/apply/index">
-										<image lazy-load="true" class="nav-btn-img" :src='$imgUrl+lang+"/page/btn.png"'
-											mode="widthFix">
-										</image>
-									</navigator>
-								</view>
+								<apply-link :applyBtnFixed="applyBtnFixed"></apply-link>
 							</view>
 						</scroll-view>
 					</swiper-item>
@@ -40,6 +34,7 @@
 	import dragButton from "@/components/drag-button/drag-button.vue";
 	import container from '../../components/container/index.vue'
 	import LsSwiper from '../../components/ls-swiper/index.vue'
+	import ApplyLink from '../../components/apply-link.vue'
 
 	// 缓存每页最多
 	const MAX_CACHE_DATA = 100;
@@ -70,7 +65,8 @@
 				base_lsit: [],
 				autoplay: true,
 				loop: true,
-				muteBtn: true
+				muteBtn: true,
+				applyBtnFixed: true //了解如何申请按钮是否悬浮置地
 				/*doctor end*/
 			}
 		},
@@ -78,6 +74,7 @@
 			dragButton,
 			container,
 			LsSwiper,
+			ApplyLink
 		},
 		computed: {},
 		onLoad(option) {
@@ -220,19 +217,8 @@
 		margin: 0 10%;
 	}
 
-	.page-footer-btn {
-		background: #efefef;
-		padding: 30upx 0;
-		display: flex;
-		justify-content: center;
-	}
-
-	.nav-btn {
-		width: 60%;
-	}
-
-	.nav-btn-img {
-		width: 100%;
+	.tab-img-list.pb-100 {
+		padding-bottom: 100upx;
 	}
 
 	.tips {

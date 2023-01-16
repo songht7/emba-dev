@@ -16,7 +16,7 @@
 				<swiper :current="tabIndex" class="swiper-box" duration="300" @change="ontabchange">
 					<swiper-item v-for="(lst,index1) in contList" :key="index1">
 						<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
-							<view class="tab-img-list">
+							<view :class="['tab-img-list',applyBtnFixed?'pb-100':'']">
 								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
 									<image class="tab-dtl-img"
 										:src='$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"' mode="widthFix">
@@ -39,19 +39,13 @@
 								</block>
 								<block v-if="lst.tips">
 									<view class="tips">
-										<image class="tab-dtl-img"
-											:src='$imgUrl+lang+"/page/p"+lst["id"]+"/"+lst.tips' mode="widthFix">
+										<image class="tab-dtl-img" :src='$imgUrl+lang+"/page/p"+lst["id"]+"/"+lst.tips'
+											mode="widthFix">
 										</image>
 									</view>
 								</block>
 
-								<view class="page-footer-btn">
-									<navigator class="nav-btn" url="/pages/apply/index">
-										<image lazy-load="true" class="nav-btn-img" :src='$imgUrl+lang+"/page/btn.png"'
-											mode="widthFix">
-										</image>
-									</navigator>
-								</view>
+								<apply-link :applyBtnFixed="applyBtnFixed"></apply-link>
 							</view>
 						</scroll-view>
 					</swiper-item>
@@ -59,6 +53,7 @@
 			</view>
 
 		</view>
+		<!-- <apply-link></apply-link> -->
 	</view>
 </template>
 
@@ -70,6 +65,7 @@
 	import dragButton from "@/components/drag-button/drag-button.vue";
 	import container from '../../components/container/index.vue'
 	import LsSwiper from '../../components/ls-swiper/index.vue'
+	import ApplyLink from '../../components/apply-link.vue'
 
 	// 缓存每页最多
 	const MAX_CACHE_DATA = 100;
@@ -100,7 +96,8 @@
 				base_lsit: [],
 				autoplay: true,
 				loop: true,
-				muteBtn: true
+				muteBtn: true,
+				applyBtnFixed: true //了解如何申请按钮是否悬浮置地
 				/*doctor end*/
 			}
 		},
@@ -108,6 +105,7 @@
 			dragButton,
 			container,
 			LsSwiper,
+			ApplyLink
 		},
 		computed: {},
 		onLoad(option) {
@@ -213,7 +211,7 @@
 		align-items: center;
 		justify-content: center; */
 		min-height: 100%;
-		background: #f1f1f1;
+		background: #efefef;
 	}
 
 	.pg-main {
@@ -247,21 +245,11 @@
 		margin: 0 10%;
 	}
 
-	.page-footer-btn {
-		background: #efefef;
-		padding: 30upx 0;
-		display: flex;
-		justify-content: center;
+	.tab-img-list.pb-100 {
+		padding-bottom: 100upx;
 	}
 
-	.nav-btn {
-		width: 60%;
-	}
-
-	.nav-btn-img {
-		width: 100%;
-	}
-	.tips{
+	.tips {
 		padding: 10upx 40upx;
 	}
 </style>
