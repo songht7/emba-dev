@@ -83,10 +83,15 @@ const Emba = {
 				"lsSwiperList": [
 					//里昂
 					[{
-						id: "la1",
+						id: "la5",
 						type: "liang",
-						name: "孙立坚",
-						imgUrl: "/page/p5/liang/la_1.png"
+						name: "王 华",
+						imgUrl: "/page/p5/liang/la_5.png"
+					}, {
+						id: "la4",
+						type: "liang",
+						name: "龚业明",
+						imgUrl: "/page/p5/liang/la_4.png"
 					}, {
 						id: "la2",
 						type: "liang",
@@ -98,47 +103,47 @@ const Emba = {
 						name: "Rhoda Davidson",
 						imgUrl: "/page/p5/liang/la_3.png"
 					}, {
-						id: "la4",
+						id: "la1",
 						type: "liang",
-						name: "龚业明",
-						imgUrl: "/page/p5/liang/la_4.png"
-					}, {
-						id: "la5",
-						type: "liang",
-						name: "王 华",
-						imgUrl: "/page/p5/liang/la_5.png"
+						name: "孙立坚",
+						imgUrl: "/page/p5/liang/la_1.png"
 					}],
 					//北邮
 					[{
+						id: "by0",
+						type: "beiyou",
+						name: "陈慧",
+						imgUrl: "/page/p5/beiyou/by_0.png"
+					}, {
 						id: "by1",
 						type: "beiyou",
 						name: "吕廷杰",
 						imgUrl: "/page/p5/beiyou/by_1.png"
 					}, {
-						id: "by2",
+						id: "by6",
 						type: "beiyou",
-						name: "何瑛",
-						imgUrl: "/page/p5/beiyou/by_2.png"
-					}, {
-						id: "by3",
-						type: "beiyou",
-						name: "杨学成",
-						imgUrl: "/page/p5/beiyou/by_3.png"
-					}, {
-						id: "by4",
-						type: "beiyou",
-						name: "刘克选",
-						imgUrl: "/page/p5/beiyou/by_4.png"
+						name: "赵玉平",
+						imgUrl: "/page/p5/beiyou/by_6.png"
 					}, {
 						id: "by5",
 						type: "beiyou",
 						name: "张永泽",
 						imgUrl: "/page/p5/beiyou/by_5.png"
 					}, {
-						id: "by6",
+						id: "by4",
 						type: "beiyou",
-						name: "赵玉平",
-						imgUrl: "/page/p5/beiyou/by_6.png"
+						name: "刘克选",
+						imgUrl: "/page/p5/beiyou/by_4.png"
+					}, {
+						id: "by3",
+						type: "beiyou",
+						name: "杨学成",
+						imgUrl: "/page/p5/beiyou/by_3.png"
+					}, {
+						id: "by2",
+						type: "beiyou",
+						name: "何瑛",
+						imgUrl: "/page/p5/beiyou/by_2.png"
 					}]
 				]
 			},
