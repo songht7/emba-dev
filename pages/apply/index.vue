@@ -36,7 +36,7 @@
 										@click="linkto(lst['picLink']['i'+index])"
 										:src='$imgUrl+lang+"/apply/"+"/ls_"+index+".jpg"' mode="widthFix">
 									</image>
-									<!-- 		<view class="">
+									<!-- <view class="">
 										{{$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"}}
 									</view> -->
 								</block>
