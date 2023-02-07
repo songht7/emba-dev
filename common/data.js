@@ -184,7 +184,7 @@ const Apply = {
 				},
 				"i6": {
 					"linkType": "outside", //链接类型：outside外部网站，默认本站内
-					"link": "https://em-lyon.force.com/Student"
+					"link": "https://sfdc1.em-lyon.com.cn/dynamic/7012w000000tRvdAAE/agencyid/nocache?lang=zh-cn"
 				},
 				"i8": {
 					//面试时间
