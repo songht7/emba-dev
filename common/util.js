@@ -113,10 +113,7 @@ const module = {
 		if (!that.isWeixin()) {
 			return
 		}
-		var _link = obj.share_url || location.origin + "/#/"; //window.location.href.split('#')[0];
-		if (that.isIOS()) {
-			_link = obj.share_url || location.origin + "/";
-		}
+		var _link = obj.share_url || location.origin + "/";
 
 		let REDIRECT_URI = encodeURIComponent(_link),
 			appid = Interface.wx.appid,
@@ -195,8 +192,8 @@ const module = {
 		var myDate = new Date(),
 			year = myDate.getYear();
 		var wxSet = {
-			title: obj.title || (obj.lang == "en" ? "Global DBA" : "法国里昂商学院亚洲校区GDBA项目招生简章"),
-			desc: obj.dec || (obj.lang == "en" ? "Asia Track Introduction " + year : "全球工商管理博士2023级"),
+			title: obj.title ? obj.title : "2023级高级工商管理硕士",
+			desc: obj.dec ? obj.dec : "北京邮电大学，法国里昂商学院（中外合作办学），项目申请指南",
 			link: _link,
 			imgUrl: obj.imgUrl || _imgUrl,
 			success: function(res) {

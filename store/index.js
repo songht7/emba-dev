@@ -16,7 +16,7 @@ const store = new Vuex.Store({
 		isWeixin: false,
 		sysInfo: "",
 		popup_user: "on",
-		lang: ""
+		lang: "ch"
 	},
 	mutations: {
 		isWeixin(state, status) {
