@@ -192,8 +192,8 @@ const module = {
 		var myDate = new Date(),
 			year = myDate.getYear();
 		var wxSet = {
-			title: obj.title ? obj.title : "2023级高级工商管理硕士",
-			desc: obj.dec ? obj.dec : "北京邮电大学，法国里昂商学院（中外合作办学），项目申请指南",
+			title: obj.title ? obj.title : "北邮-里昂GEMBA项目招生简章",
+			desc: obj.dec ? obj.dec : "2023级高级工商管理硕士",
 			link: _link,
 			imgUrl: obj.imgUrl || _imgUrl,
 			success: function(res) {
