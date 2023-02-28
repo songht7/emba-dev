@@ -5,7 +5,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "北邮里昂商学院EMBA",
+				"navigationBarTitleText": "北邮-里昂GEMBA项目招生简章",
 				"navigationStyle": "custom" //h5
 				// "app-plus": { //mp
 				// 	"titleNView": {
