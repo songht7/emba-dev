@@ -9,7 +9,7 @@
 								<block v-if="lst['lslength']" v-for="index of lst.lslength" :key="index">
 									<image lazy-load="true" class="tab-dtl-img"
 										@click="linkto(lst['picLink']['i'+index])"
-										:src='$imgUrl+lang+"/interview/"+"/ls_"+index+".jpg"' mode="widthFix">
+										:src='$imgUrl+lang+"/interview/"+"/ls_"+index+".jpg?v=202300615"' mode="widthFix">
 									</image>
 									<!-- 		<view class="">
 										{{$imgUrl+lang+"/page/p"+lst["id"]+"/ls_"+index+".jpg"}}
