@@ -1,6 +1,6 @@
 // #ifdef H5
-// var wx = require('jweixin-module')
-var wx = require('weixin-js-sdk');
+var wx = require('jweixin-module')
+// var wx = require('weixin-js-sdk');
 // #endif
 import VueCookie from 'vue-cookie'
 import md5 from "./md5.js";
@@ -21,7 +21,7 @@ const Interface = {
 	},
 	// 	,"getData":"http://api_test.meetji.com/v1/ApiEnum-getRegion.htm?id=110000"
 	"apiurl": "https://api.meetji.com",
-	"domain": "https://emba.meetji.com",
+	"domain": "http://emba.meetji.com",//"https://emba.meetji.com",
 	"template_id": "lArO_3bhjAAoCMdv78bmJ2l46L-HByz-4Co4tCDEiyI", //'4M8RWgwsGDYlZL_NuWg--FecFh3QKWMW1hVZIfm34IU'
 	"addr": {
 		"sendRegistSms": "/v4/ApiSms-sendRegistSms.htm", //发送验证码(有阻拦：手机号已使用) 测试：1111
@@ -137,8 +137,8 @@ const module = {
 				jsApiList: [
 					'updateAppMessageShareData',
 					'updateTimelineShareData',
-					'onMenuShareAppMessage',
-					'onMenuShareTimeline',
+					// 'onMenuShareAppMessage',
+					// 'onMenuShareTimeline',
 				]
 			}
 			// console.log('wx.config:', _config)
@@ -192,10 +192,10 @@ const module = {
 		var myDate = new Date(),
 			year = myDate.getYear();
 		var wxSet = {
-			title: obj.title ? obj.title : "北邮-里昂GEMBA项目招生简章",
-			desc: obj.dec ? obj.dec : "2023级高级工商管理硕士",
+			title: "北邮-里昂GEMBA项目招生简章",//obj.title ? obj.title : 
+			desc: "2024级高级工商管理硕士",//obj.dec ? obj.dec : 
 			link: _link,
-			imgUrl: obj.imgUrl || _imgUrl,
+			imgUrl: _imgUrl,//obj.imgUrl || 
 			success: function(res) {
 				console.log('wxSet-success:', res)
 			}
@@ -209,8 +209,8 @@ const module = {
 			// 2.2 “分享到朋友圈”及“分享到QQ空间”
 			wx.updateTimelineShareData(wxSet);
 			// 
-			wx.onMenuShareTimeline(wxSet);
-			wx.onMenuShareAppMessage(wxSet);
+			// wx.onMenuShareTimeline(wxSet);
+			// wx.onMenuShareAppMessage(wxSet);
 		});
 		wx.error(function(res) {
 			console.log('注册失败:', res)
